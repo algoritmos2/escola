@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int main(void)
+{
+    struct endereco{
+        char bairro[30],rua[30],cidade[20];
+        int numero;
+    };
+
+    struct{
+        int cod_escola,tel_escola,tel_resp;
+        char nome_escola[30], nome_resp[30],email[30];
+        float receita;
+        struct endereco end;
+    }escola1;
+
+    struct{
+        int cod_ti,tel_ti;
+        char nome_ti[40],email_ti[30],empresa_ti[20];
+    }profissional;
+
+    struct{
+        int cod_falha;
+        char titulo_falha[20],necess_falha[20],tipo[20],descricao[30],nome_pecas[30];
+    }problema;
+
+    struct{
+        int cod_diag;
+        float orc_diag;
+        char bug_diag[30],tipo_diag[20], desc_diag[30];
+    }solucao;
+
+    struct{
+        int cod_os;
+        float valor_os;
+        struct problema falha[5];
+        struct solucao diag[5];
+        struct escola1 escola[5];
+        struct profissional ti;
+    }os;
+
+    return 0;
+}
+
