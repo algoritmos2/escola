@@ -43,149 +43,152 @@ FILE *escol,*profiss,*falhas,*diag;
 
 
     cadastrar_escola( ){
-        int op;
-        escol = fopen("escol.txt","a+b");
-        printf ("Selecione a Escola Desejada:\n");
-        printf("[ 1 ] EMEF TANCREDO DE ALMEIDA NEVES - RUA IRERE, 4244 - TANCREDO NEVES\n");
-        printf("[ 2 ] EMPG ALBINO SALDANHA DANTAS - RUA ALMIRANTE TAMANDARE, 1870 - VILA GOULART\n");
-        printf("[ 3 ] EMPG MARIO DE ANDRADE - RUA DA PATRIA, 915 - VILA VERDE\n");
-        printf("[ 4 ] EMPG NOSSA SENHORA APARECIDA I - RUA TEOFILO FRANCISCO DA CRUZ, 215 - VILA CANAA\n");
-        printf("[ 5 ] EMEF ROSALINO ANTONIO DA SILVA - RUA CANINDE, 1075 - JARDIM IGUASSU\n");
-        printf("[ 6 ] EMEF VILA ROSELY - AV ADALBERTO ANTONIO DA SILVA, 0 - JARDIM MORUNBI\n");
-        printf("[ 7 ] EMEF ARAO GOMES BEZERRA - RUA RONDONOPOLIS, SN - JARDIM ITAPUA\n");
-        printf("[ 7 ] EMPG EDIVALDO ZULLIANI BELO - AV. DELFINA GOMES SOARES -  JARDIM PARTICIPACAO\n");
-        printf("[ 8 ] EMEI MATEUS VINICIUS BRAZ - RUA DA PAZ, 314 - JARDIM BRASILIA\n");
-        printf("[ 9 ] EMPG FREI MILTON M DA SILVA - RUA SABARA, 588 - JARDIM VILA RICA\n\n");
-        scanf ("%d",&op);
-        while (op>9 || op<1){
-            printf ("Opçao invalida!!!");
-            printf ("\nEscolha Novamente: ");
+        int op,resp=1,cont;
+            while (resp==1){
+            escol = fopen("escol.txt","a+b");
+            printf ("\nCADASTRO DE ESCOLAS\n");
+            printf("\nOpcoes de Escolas:\n");
+            printf("[ 1 ] EMEF TANCREDO DE ALMEIDA NEVES - RUA IRERE, 4244 - TANCREDO NEVES\n");
+            printf("[ 2 ] EMPG ALBINO SALDANHA DANTAS - RUA ALMIRANTE TAMANDARE, 1870 - VILA GOULART\n");
+            printf("[ 3 ] EMPG MARIO DE ANDRADE - RUA DA PATRIA, 915 - VILA VERDE\n");
+            printf("[ 4 ] EMPG NOSSA SENHORA APARECIDA I - RUA TEOFILO FRANCISCO DA CRUZ, 215 - VILA CANAA\n");
+            printf("[ 5 ] EMEF ROSALINO ANTONIO DA SILVA - RUA CANINDE, 1075 - JARDIM IGUASSU\n");
+            printf("[ 6 ] EMEF VILA ROSELY - AV ADALBERTO ANTONIO DA SILVA, 0 - JARDIM MORUNBI\n");
+            printf("[ 7 ] EMEF ARAO GOMES BEZERRA - RUA RONDONOPOLIS, SN - JARDIM ITAPUA\n");
+            printf("[ 7 ] EMPG EDIVALDO ZULLIANI BELO - AV. DELFINA GOMES SOARES -  JARDIM PARTICIPACAO\n");
+            printf("[ 8 ] EMEI MATEUS VINICIUS BRAZ - RUA DA PAZ, 314 - JARDIM BRASILIA\n");
+            printf("[ 9 ] EMPG FREI MILTON M DA SILVA - RUA SABARA, 588 - JARDIM VILA RICA\n\n");
+            printf("Selecione uma das escolas listadas: ");
             scanf ("%d",&op);
-            printf ("\n");
-        }
+            while (op>9 || op<1){
+                printf ("Opçao invalida!!!");
+                printf ("\nEscolha Novamente: ");
+                scanf ("%d",&op);
+                printf ("\n");
+            }
             if (op==1){
-                    strcpy (ordem_servico.escolas.nome_escola,"EMEF TANCREDO DE ALMEIDA NEVES");
-                    strcpy (ordem_servico.escolas.end.bairro,"TANCREDO NEVES");
-                    strcpy (ordem_servico.escolas.end.rua,"RUA IRERE");
-                    strcpy (ordem_servico.escolas.end.numero,"4244");
-                    printf ("Escola: ");
-                    puts(ordem_servico.escolas.nome_escola);
-                    printf ("Bairro: ");
-                    puts (ordem_servico.escolas.end.bairro);
-                    printf ("Rua: ");
-                    puts(ordem_servico.escolas.end.rua);
-                    printf ("Numero: ");
-                    puts (ordem_servico.escolas.end.numero);
+                strcpy (ordem_servico.escolas.nome_escola,"EMEF TANCREDO DE ALMEIDA NEVES");
+                strcpy (ordem_servico.escolas.end.bairro,"TANCREDO NEVES");
+                strcpy (ordem_servico.escolas.end.rua,"RUA IRERE");
+                strcpy (ordem_servico.escolas.end.numero,"4244");
+                printf ("Escola: ");
+                puts(ordem_servico.escolas.nome_escola);
+                printf ("Bairro: ");
+                puts (ordem_servico.escolas.end.bairro);
+                printf ("Rua: ");
+                puts(ordem_servico.escolas.end.rua);
+                printf ("Numero: ");
+                puts (ordem_servico.escolas.end.numero);
             }
             else if (op==2){
-                    fflush(stdin);
-                    strcpy (ordem_servico.escolas.nome_escola,"EMPG ALBINO SALDANHA DANTAS");
-                    strcpy (ordem_servico.escolas.end.bairro,"VILA GOULART");
-                    strcpy (ordem_servico.escolas.end.rua,"RUA ALMIRANTE TAMANDARE");
-                    strcpy (ordem_servico.escolas.end.numero,"1870");
-                    printf ("Escola: ");
-                    puts(ordem_servico.escolas.nome_escola);
-                    printf ("Bairro: ");
-                    fflush(stdin);
-                    puts (ordem_servico.escolas.end.bairro);
-                    fflush(stdin);
-                    printf ("Rua: ");
-                    puts(ordem_servico.escolas.end.rua);
-                    fflush(stdin);
-                    printf ("Numero: ");
-                    puts (ordem_servico.escolas.end.numero);
-                    fflush(stdin);
+                fflush(stdin);
+                strcpy (ordem_servico.escolas.nome_escola,"EMPG ALBINO SALDANHA DANTAS");
+                strcpy (ordem_servico.escolas.end.bairro,"VILA GOULART");
+                strcpy (ordem_servico.escolas.end.rua,"RUA ALMIRANTE TAMANDARE");
+                strcpy (ordem_servico.escolas.end.numero,"1870");
+                printf ("Escola: ");
+                puts(ordem_servico.escolas.nome_escola);
+                printf ("Bairro: ");
+                fflush(stdin);
+                puts (ordem_servico.escolas.end.bairro);
+                fflush(stdin);
+                printf ("Rua: ");
+                puts(ordem_servico.escolas.end.rua);
+                fflush(stdin);
+                printf ("Numero: ");
+                puts (ordem_servico.escolas.end.numero);
+                fflush(stdin);
             }else if (op==3){
-                    strcpy (ordem_servico.escolas.nome_escola,"EMPG MARIO DE ANDRADE");
-                    strcpy (ordem_servico.escolas.end.bairro,"VILA VERDE");
-                    strcpy (ordem_servico.escolas.end.rua,"RUA DA PATRIA");
-                    strcpy (ordem_servico.escolas.end.numero,"915");
-                    printf ("Escola: ");
-                    puts(ordem_servico.escolas.nome_escola);
-                    printf ("Bairro: ");
-                    puts (ordem_servico.escolas.end.bairro);
-                    printf ("Rua: ");
-                    puts(ordem_servico.escolas.end.rua);
-                    printf ("Numero: ");
-                    puts (ordem_servico.escolas.end.numero);
+                strcpy (ordem_servico.escolas.nome_escola,"EMPG MARIO DE ANDRADE");
+                strcpy (ordem_servico.escolas.end.bairro,"VILA VERDE");
+                strcpy (ordem_servico.escolas.end.rua,"RUA DA PATRIA");
+                strcpy (ordem_servico.escolas.end.numero,"915");
+                printf ("Escola: ");
+                puts(ordem_servico.escolas.nome_escola);
+                printf ("Bairro: ");
+                puts (ordem_servico.escolas.end.bairro);
+                printf ("Rua: ");
+                puts(ordem_servico.escolas.end.rua);
+                printf ("Numero: ");
+                puts (ordem_servico.escolas.end.numero);
             }else if (op==4){
-                    strcpy (ordem_servico.escolas.nome_escola,"EMPG NOSSA SENHORA APARECIDA I");
-                    strcpy (ordem_servico.escolas.end.bairro,"VILA CANAA");
-                    strcpy (ordem_servico.escolas.end.rua,"RUA TEOFILO FRANCISCO DA CRUZ");
-                    strcpy (ordem_servico.escolas.end.numero,"215");
-                    printf ("Escola: ");
-                    puts(ordem_servico.escolas.nome_escola);
-                    printf ("Bairro: ");
-                    puts (ordem_servico.escolas.end.bairro);
-                    printf ("Rua: ");
-                    puts(ordem_servico.escolas.end.rua);
-                    printf ("Numero: ");
-                    puts (ordem_servico.escolas.end.numero);
+                strcpy (ordem_servico.escolas.nome_escola,"EMPG NOSSA SENHORA APARECIDA I");
+                strcpy (ordem_servico.escolas.end.bairro,"VILA CANAA");
+                strcpy (ordem_servico.escolas.end.rua,"RUA TEOFILO FRANCISCO DA CRUZ");
+                strcpy (ordem_servico.escolas.end.numero,"215");
+                printf ("Escola: ");
+                puts(ordem_servico.escolas.nome_escola);
+                printf ("Bairro: ");
+                puts (ordem_servico.escolas.end.bairro);
+                printf ("Rua: ");
+                puts(ordem_servico.escolas.end.rua);
+                printf ("Numero: ");
+                puts (ordem_servico.escolas.end.numero);
             }else if (op==5){
-                    strcpy (ordem_servico.escolas.nome_escola,"EMEF ROSALINO ANTONIO DA SILVA");
-                    strcpy (ordem_servico.escolas.end.bairro,"JARDIM IGUASSU");
-                    strcpy (ordem_servico.escolas.end.rua,"RUA CANINDE");
-                    strcpy (ordem_servico.escolas.end.numero,"1075");
-                    printf ("Escola: ");
-                    puts(ordem_servico.escolas.nome_escola);
-                    printf ("Bairro: ");
-                    puts (ordem_servico.escolas.end.bairro);
-                    printf ("Rua: ");
-                    puts(ordem_servico.escolas.end.rua);
-                    printf ("Numero: ");
-                    puts(ordem_servico.escolas.end.numero);
+                strcpy (ordem_servico.escolas.nome_escola,"EMEF ROSALINO ANTONIO DA SILVA");
+                strcpy (ordem_servico.escolas.end.bairro,"JARDIM IGUASSU");
+                strcpy (ordem_servico.escolas.end.rua,"RUA CANINDE");
+                strcpy (ordem_servico.escolas.end.numero,"1075");
+                printf ("Escola: ");
+                puts(ordem_servico.escolas.nome_escola);
+                printf ("Bairro: ");
+                puts (ordem_servico.escolas.end.bairro);
+                printf ("Rua: ");
+                puts(ordem_servico.escolas.end.rua);
+                printf ("Numero: ");
+                puts(ordem_servico.escolas.end.numero);
             }else if (op==6){
-                    strcpy (ordem_servico.escolas.nome_escola,"EMEF VILA ROSELY");
-                    strcpy (ordem_servico.escolas.end.bairro,"JARDIM MORUNBI");
-                    strcpy (ordem_servico.escolas.end.rua,"AV ADALBERTO ANTONIO DA SILVA");
-                    strcpy (ordem_servico.escolas.end.numero,"0");
-                    printf ("Escola: ");
-                    puts(ordem_servico.escolas.nome_escola);
-                    printf ("Bairro: ");
-                    puts (ordem_servico.escolas.end.bairro);
-                    printf ("Rua: ");
-                    puts(ordem_servico.escolas.end.rua);
-                    printf ("Numero: ");
-                    puts (ordem_servico.escolas.end.numero);
+                strcpy (ordem_servico.escolas.nome_escola,"EMEF VILA ROSELY");
+                strcpy (ordem_servico.escolas.end.bairro,"JARDIM MORUNBI");
+                strcpy (ordem_servico.escolas.end.rua,"AV ADALBERTO ANTONIO DA SILVA");
+                strcpy (ordem_servico.escolas.end.numero,"0");
+                printf ("Escola: ");
+                puts(ordem_servico.escolas.nome_escola);
+                printf ("Bairro: ");
+                puts (ordem_servico.escolas.end.bairro);
+                printf ("Rua: ");
+                puts(ordem_servico.escolas.end.rua);
+                printf ("Numero: ");
+                puts (ordem_servico.escolas.end.numero);
             }else if (op==7){
-                    strcpy (ordem_servico.escolas.nome_escola,"EMEF ARAO GOMES BEZERRA");
-                    strcpy (ordem_servico.escolas.end.bairro,"JARDIM ITAPUA");
-                    strcpy (ordem_servico.escolas.end.rua,"RUA RONDONOPOLIS");
-                    strcpy (ordem_servico.escolas.end.numero,"Sem Numero");
-                    printf ("Escola: ");
-                    puts(ordem_servico.escolas.nome_escola);
-                    printf ("Bairro: ");
-                    puts (ordem_servico.escolas.end.bairro);
-                    printf ("Rua: ");
-                    puts(ordem_servico.escolas.end.rua);
-                    printf ("Numero: ");
-                    puts(ordem_servico.escolas.end.numero);
+                strcpy (ordem_servico.escolas.nome_escola,"EMEF ARAO GOMES BEZERRA");
+                strcpy (ordem_servico.escolas.end.bairro,"JARDIM ITAPUA");
+                strcpy (ordem_servico.escolas.end.rua,"RUA RONDONOPOLIS");
+                strcpy (ordem_servico.escolas.end.numero,"Sem Numero");
+                printf ("Escola: ");
+                puts(ordem_servico.escolas.nome_escola);
+                printf ("Bairro: ");
+                puts (ordem_servico.escolas.end.bairro);
+                printf ("Rua: ");
+                puts(ordem_servico.escolas.end.rua);
+                printf ("Numero: ");
+                puts(ordem_servico.escolas.end.numero);
             }else if (op==8){
-                    strcpy (ordem_servico.escolas.nome_escola,"EMEI MATEUS VINICIUS BRAZ");
-                    strcpy (ordem_servico.escolas.end.bairro,"JARDIM BRASILIA");
-                    strcpy (ordem_servico.escolas.end.rua,"RUA DA PAZ");
-                    strcpy (ordem_servico.escolas.end.numero,"314");
-                    printf ("Escola: ");
-                    puts(ordem_servico.escolas.nome_escola);
-                    printf ("Bairro: ");
-                    puts (ordem_servico.escolas.end.bairro);
-                    printf ("Rua: ");
-                    puts(ordem_servico.escolas.end.rua);
-                    printf ("Numero: ");
-                    puts(ordem_servico.escolas.end.numero);
+                strcpy (ordem_servico.escolas.nome_escola,"EMEI MATEUS VINICIUS BRAZ");
+                strcpy (ordem_servico.escolas.end.bairro,"JARDIM BRASILIA");
+                strcpy (ordem_servico.escolas.end.rua,"RUA DA PAZ");
+                strcpy (ordem_servico.escolas.end.numero,"314");
+                printf ("Escola: ");
+                puts(ordem_servico.escolas.nome_escola);
+                printf ("Bairro: ");
+                puts (ordem_servico.escolas.end.bairro);
+                printf ("Rua: ");
+                puts(ordem_servico.escolas.end.rua);
+                printf ("Numero: ");
+                puts(ordem_servico.escolas.end.numero);
             }else if (op==9){
-                    strcpy (ordem_servico.escolas.nome_escola,"EMPG FREI MILTON M DA SILVA");
-                    strcpy (ordem_servico.escolas.end.bairro,"JARDIM VILA RICA");
-                    strcpy (ordem_servico.escolas.end.rua,"RUA SABARA");
-                    strcpy (ordem_servico.escolas.end.numero,"588");
-                    printf ("Escola: ");
-                    puts(ordem_servico.escolas.nome_escola);
-                    printf ("Bairro: ");
-                    puts (ordem_servico.escolas.end.bairro);
-                    printf ("Rua: ");
-                    puts(ordem_servico.escolas.end.rua);
-                    printf ("Numero: ");
-                    puts(ordem_servico.escolas.end.numero);
+                strcpy (ordem_servico.escolas.nome_escola,"EMPG FREI MILTON M DA SILVA");
+                strcpy (ordem_servico.escolas.end.bairro,"JARDIM VILA RICA");
+                strcpy (ordem_servico.escolas.end.rua,"RUA SABARA");
+                strcpy (ordem_servico.escolas.end.numero,"588");
+                printf ("Escola: ");
+                puts(ordem_servico.escolas.nome_escola);
+                printf ("Bairro: ");
+                puts (ordem_servico.escolas.end.bairro);
+                printf ("Rua: ");
+                puts(ordem_servico.escolas.end.rua);
+                printf ("Numero: ");
+                puts(ordem_servico.escolas.end.numero);
             }
             fflush(stdin);
             printf ("Telefone da Escola: ");
@@ -202,6 +205,12 @@ FILE *escol,*profiss,*falhas,*diag;
             fflush(stdin);
             fwrite(&ordem_servico.escolas,sizeof(ordem_servico.escolas),1,escol);
             fclose(escol);
+            cont ++;
+            printf("\n\nDigite 1 para cadastrar uma nova escola\nDigite 2 para voltar ao menu principal\nDigite outra numero para sair\n\n");
+            scanf("%d",&resp);
+            if (resp==2)
+                main ( );
+        }
     }
 
 
@@ -209,7 +218,7 @@ FILE *escol,*profiss,*falhas,*diag;
 
 cadastrar_profissionais ( ){
     profiss = fopen("profiss.txt","a+b");
-    printf ("CADASTRO DE PROFISSIONAIS DE TI\n\n");
+    printf ("\nCADASTRO DE PROFISSIONAIS DE TI\n\n");
     printf ("Nome do Profissional de TI: ");
     fflush (stdin);
     gets (ordem_servico.profissionais.nome_ti);
@@ -236,12 +245,16 @@ cadastrar_falhas ( ) {
 
  main ( ){
     char opcao;
-    printf("******* MENU PRINCIPAL *******\n");
+    int cont,resp=1;
+    while (resp==1) {
+    printf("\n\n******* MENU PRINCIPAL *******\n");
     printf("[ A ] Cadastrar Escolas\n");
     printf("[ B ] Cadastrar Profissionais de TI\n");
     printf("[ C ] Cadastrar Falhas Apresentadas\n");
     printf("[ D ] Cadastrar Diagnosticos\n");
-    printf("[ E ] Cadastrar Ordem de Servico\n");
+    printf("[ E ] Cadastrar Ordem de Servico\n\n");
+    printf("Escolha a opcao desejada: ");
+    fflush(stdin);
     scanf ("%c",&opcao);
     if (opcao == 'a' || opcao == 'A')
         cadastrar_escola ( );
@@ -249,6 +262,13 @@ cadastrar_falhas ( ) {
         cadastrar_profissionais ( );
     else if (opcao == 'c' || opcao == 'C')
         cadastrar_falhas ( );
+
+    printf("\nDeseja sair?\nDigite 1 para fazer um novo cadastro ou outra numero para sair: ");
+    fflush(stdin);
+    scanf("%d",&resp);
+    printf("\n\n");
+    }
  }
+
 
 
