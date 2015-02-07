@@ -1,0 +1,89 @@
+cadastrar_falhas ( ) {
+    int op=0;
+    printf ("CADASTRO DE FALHAS\n\n");
+    do{
+        printf ("Selecione a opcao: \n1-listar falhas cadastradas\n2-cadastrar nova falha\n0-SAIR\n");
+        fflush (stdin);
+        scanf("%d",&op);
+        fflush (stdin);
+        if(op == 1)
+        {
+            /*while (!feof(falhas)) {
+                fread(&ordem_servico.diagnostico.falha,sizeof(ordem_servico.diagnostico.falha),1,falhas);
+                puts(ordem_servico.diagnostico.falha.cod_falha);
+                puts(ordem_servico.diagnostico.falha.titulo_falha);
+                puts(ordem_servico.diagnostico.falha.necess_falha);
+                puts(ordem_servico.diagnostico.falha.tipo);
+                puts(ordem_servico.diagnostico.falha.descricao);
+                puts(ordem_servico.diagnostico.falha.nome_pecas);
+            }*/
+            system("cls");
+            char temp[50];
+            falhas=fopen("falhas.txt","r");
+            int i=0;
+            while(fscanf(falhas,"%s",temp)!=EOF)
+            {
+                if(i%5==0)
+                {
+                    printf("Titulo: %s\n",temp);
+                }
+                    else if(i%5==1){
+                    printf("necessidade: %s\n",temp);}
+                    else if(i%5==2){
+                    printf("tipo %s\n",temp);}
+                    else if(i%5==3){
+                    printf("Descricao %s\n",temp);}
+                    else if(i%5==4){
+                    printf("pecas: %s\n\n",temp);}
+                    i++;
+                }
+        }
+        else if(op == 2)
+        {
+            printf ("Titulo: ");
+            fflush (stdin);
+            gets(ordem_servico.diagnostico.falha.titulo_falha);
+
+            printf ("Necessidade: ");
+            fflush (stdin);
+            gets(ordem_servico.diagnostico.falha.necess_falha);
+
+            printf ("Tipo: ");
+            fflush (stdin);
+            gets(ordem_servico.diagnostico.falha.tipo);
+
+            printf ("Descricao: ");
+            fflush (stdin);
+            gets(ordem_servico.diagnostico.falha.descricao);
+
+            printf ("Pecas danificadas: ");
+            fflush (stdin);
+            gets(ordem_servico.diagnostico.falha.nome_pecas);
+            system("cls");
+            
+            falhas=fopen("falhas.txt","a");
+            fprintf(falhas,"%s\n",ordem_servico.diagnostico.falha.titulo_falha);
+            fprintf(falhas,"%s\n",ordem_servico.diagnostico.falha.necess_falha);
+            fprintf(falhas,"%s\n",ordem_servico.diagnostico.falha.tipo);
+            fprintf(falhas,"%s\n",ordem_servico.diagnostico.falha.descricao);
+            fprintf(falhas,"%s\n",ordem_servico.diagnostico.falha.nome_pecas);
+            fprintf(falhas,"\n");
+
+            system("cls");
+            printf("Titulo: %s\n",ordem_servico.diagnostico.falha.titulo_falha);
+            printf("Necessidade: %s\n",ordem_servico.diagnostico.falha.necess_falha);
+            printf("Tipo: %s\n",ordem_servico.diagnostico.falha.tipo);
+            printf("Descricao: %s\n",ordem_servico.diagnostico.falha.descricao);
+            printf("Pecas danificadas: %s\n",ordem_servico.diagnostico.falha.nome_pecas);
+
+            getchar();
+            fclose(falhas);
+            system("cls");
+            main();
+            system("pause");
+        }
+
+    }while(op != 0);
+    fwrite(&ordem_servico.diagnostico,sizeof(ordem_servico.diagnostico),1,escol);
+    fclose(falhas);
+}
