@@ -1,45 +1,431 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <conio.h>
 
-int main(void)
-{
+FILE *escol,*profiss,*falhas,*diag;
+
     struct endereco{
-        char bairro[30],rua[30],cidade[20];
-        int numero;
+        char bairro[30],rua[30],numero[11];
     };
 
-    struct{
-        int cod_escola,tel_escola,tel_resp;
-        char nome_escola[30], nome_resp[30],email[30];
+    struct escola {
+        int cod_escola;
+        char nome_escola[50], nome_resp[30],email[30],tel_escola[12],tel_resp[12];
         float receita;
         struct endereco end;
-    }escola1;
+    };
 
-    struct{
-        int cod_ti,tel_ti;
-        char nome_ti[40],email_ti[30],empresa_ti[20];
-    }profissional;
+    struct profissional {
+        int cod_ti;
+        char nome_ti[40],email_ti[30],empresa_ti[20],tel_ti[11];
+    };
 
-    struct{
+    struct problema {
         int cod_falha;
         char titulo_falha[20],necess_falha[20],tipo[20],descricao[30],nome_pecas[30];
-    }problema;
+    };
 
-    struct{
-        int cod_diag;
+    struct solucao{
+        int cod_diag,tipo_diag;
         float orc_diag;
-        char bug_diag[30],tipo_diag[20], desc_diag[30];
-    }solucao;
+        char bug_diag[30],desc_diag[30];
+        struct problema falha;
+    };
 
-    struct{
-        int cod_os;
-        float valor_os;
-        struct problema falha[5];
-        struct solucao diag[5];
-        struct escola1 escola[5];
-        struct profissional ti;
-    }os;
+    struct {
 
-    return 0;
-    teste
+        struct escola escolas;
+        struct profissional profissionais;
+        struct solucao diagnostico;
+    }ordem_servico;
+
+
+
+
+cadastrar_escola( )
+    {
+        int op;
+        escol = fopen("escol.txt","a+b");
+        printf ("Selecione a opção Desejada:\n");
+        scanf ("%d",&op);
+        while (op>9 || op<1){
+            printf ("Opçao invalida!!!");
+            printf ("\nEscolha Novamente: ");
+            scanf ("%d",&op);
+            printf ("\n");
+        }
+            if (op==1){
+                    strcpy (ordem_servico.escolas.nome_escola,"EMEF TANCREDO DE ALMEIDA NEVES");
+                    strcpy (ordem_servico.escolas.end.bairro,"TANCREDO NEVES");
+                    strcpy (ordem_servico.escolas.end.rua,"RUA IRERE");
+                    strcpy (ordem_servico.escolas.end.numero,"4244");
+                    printf ("Escola: ");
+                    puts(ordem_servico.escolas.nome_escola);
+                    printf ("Bairro: ");
+                    puts (ordem_servico.escolas.end.bairro);
+                    printf ("Rua: ");
+                    puts(ordem_servico.escolas.end.rua);
+                    printf ("Numero: ");
+                    puts (ordem_servico.escolas.end.numero);
+            }
+            else if (op==2){
+                    fflush(stdin);
+                    strcpy (ordem_servico.escolas.nome_escola,"EMPG ALBINO SALDANHA DANTAS");
+                    strcpy (ordem_servico.escolas.end.bairro,"VILA GOULART");
+                    strcpy (ordem_servico.escolas.end.rua,"RUA ALMIRANTE TAMANDARE");
+                    strcpy (ordem_servico.escolas.end.numero,"1870");
+                    printf ("Escola: ");
+                    puts(ordem_servico.escolas.nome_escola);
+                    printf ("Bairro: ");
+                    fflush(stdin);
+                    puts (ordem_servico.escolas.end.bairro);
+                    fflush(stdin);
+                    printf ("Rua: ");
+                    puts(ordem_servico.escolas.end.rua);
+                    fflush(stdin);
+                    printf ("Numero: ");
+                    puts (ordem_servico.escolas.end.numero);
+                    fflush(stdin);
+            }else if (op==3){
+                    strcpy (ordem_servico.escolas.nome_escola,"EMPG MARIO DE ANDRADE");
+                    strcpy (ordem_servico.escolas.end.bairro,"VILA VERDE");
+                    strcpy (ordem_servico.escolas.end.rua,"RUA DA PATRIA");
+                    strcpy (ordem_servico.escolas.end.numero,"915");
+                    printf ("Escola: ");
+                    puts(ordem_servico.escolas.nome_escola);
+                    printf ("Bairro: ");
+                    puts (ordem_servico.escolas.end.bairro);
+                    printf ("Rua: ");
+                    puts(ordem_servico.escolas.end.rua);
+                    printf ("Numero: ");
+                    puts (ordem_servico.escolas.end.numero);
+            }else if (op==4){
+                    strcpy (ordem_servico.escolas.nome_escola,"EMPG NOSSA SENHORA APARECIDA I");
+                    strcpy (ordem_servico.escolas.end.bairro,"VILA CANAA");
+                    strcpy (ordem_servico.escolas.end.rua,"RUA TEOFILO FRANCISCO DA CRUZ");
+                    strcpy (ordem_servico.escolas.end.numero,"215");
+                    printf ("Escola: ");
+                    puts(ordem_servico.escolas.nome_escola);
+                    printf ("Bairro: ");
+                    puts (ordem_servico.escolas.end.bairro);
+                    printf ("Rua: ");
+                    puts(ordem_servico.escolas.end.rua);
+                    printf ("Numero: ");
+                    puts (ordem_servico.escolas.end.numero);
+            }else if (op==5){
+                    strcpy (ordem_servico.escolas.nome_escola,"EMEF ROSALINO ANTONIO DA SILVA");
+                    strcpy (ordem_servico.escolas.end.bairro,"JARDIM IGUASSU");
+                    strcpy (ordem_servico.escolas.end.rua,"RUA CANINDE");
+                    strcpy (ordem_servico.escolas.end.numero,"1075");
+                    printf ("Escola: ");
+                    puts(ordem_servico.escolas.nome_escola);
+                    printf ("Bairro: ");
+                    puts (ordem_servico.escolas.end.bairro);
+                    printf ("Rua: ");
+                    puts(ordem_servico.escolas.end.rua);
+                    printf ("Numero: ");
+                    puts(ordem_servico.escolas.end.numero);
+            }else if (op==6){
+                    strcpy (ordem_servico.escolas.nome_escola,"EMEF VILA ROSELY");
+                    strcpy (ordem_servico.escolas.end.bairro,"JARDIM MORUNBI");
+                    strcpy (ordem_servico.escolas.end.rua,"AV ADALBERTO ANTONIO DA SILVA");
+                    strcpy (ordem_servico.escolas.end.numero,"0");
+                    printf ("Escola: ");
+                    puts(ordem_servico.escolas.nome_escola);
+                    printf ("Bairro: ");
+                    puts (ordem_servico.escolas.end.bairro);
+                    printf ("Rua: ");
+                    puts(ordem_servico.escolas.end.rua);
+                    printf ("Numero: ");
+                    puts (ordem_servico.escolas.end.numero);
+            }else if (op==7){
+                    strcpy (ordem_servico.escolas.nome_escola,"EMEF ARAO GOMES BEZERRA");
+                    strcpy (ordem_servico.escolas.end.bairro,"JARDIM ITAPUA");
+                    strcpy (ordem_servico.escolas.end.rua,"RUA RONDONOPOLIS");
+                    strcpy (ordem_servico.escolas.end.numero,"Sem Numero");
+                    printf ("Escola: ");
+                    puts(ordem_servico.escolas.nome_escola);
+                    printf ("Bairro: ");
+                    puts (ordem_servico.escolas.end.bairro);
+                    printf ("Rua: ");
+                    puts(ordem_servico.escolas.end.rua);
+                    printf ("Numero: ");
+                    puts(ordem_servico.escolas.end.numero);
+            }else if (op==8){
+                    strcpy (ordem_servico.escolas.nome_escola,"EMEI MATEUS VINICIUS BRAZ");
+                    strcpy (ordem_servico.escolas.end.bairro,"JARDIM BRASILIA");
+                    strcpy (ordem_servico.escolas.end.rua,"RUA DA PAZ");
+                    strcpy (ordem_servico.escolas.end.numero,"314");
+                    printf ("Escola: ");
+                    puts(ordem_servico.escolas.nome_escola);
+                    printf ("Bairro: ");
+                    puts (ordem_servico.escolas.end.bairro);
+                    printf ("Rua: ");
+                    puts(ordem_servico.escolas.end.rua);
+                    printf ("Numero: ");
+                    puts(ordem_servico.escolas.end.numero);
+            }else if (op==9){
+                    strcpy (ordem_servico.escolas.nome_escola,"EMPG FREI MILTON M DA SILVA");
+                    strcpy (ordem_servico.escolas.end.bairro,"JARDIM VILA RICA");
+                    strcpy (ordem_servico.escolas.end.rua,"RUA SABARA");
+                    strcpy (ordem_servico.escolas.end.numero,"588");
+                    printf ("Escola: ");
+                    puts(ordem_servico.escolas.nome_escola);
+                    printf ("Bairro: ");
+                    puts (ordem_servico.escolas.end.bairro);
+                    printf ("Rua: ");
+                    puts(ordem_servico.escolas.end.rua);
+                    printf ("Numero: ");
+                    puts(ordem_servico.escolas.end.numero);
+            }
+            fflush(stdin);
+            printf ("Telefone da Escola: ");
+            gets (ordem_servico.escolas.tel_escola);
+            fflush(stdin);
+            printf ("Nome do Responsavel:");
+            gets (ordem_servico.escolas.nome_resp);
+            fflush(stdin);
+            printf ("Telefone do Responsavel: ");
+            gets (ordem_servico.escolas.tel_resp);
+            fflush(stdin);
+            printf ("E-mail do Responsavel: ");
+            gets (ordem_servico.escolas.email);
+            fflush(stdin);
+            fwrite(&ordem_servico.escolas,sizeof(ordem_servico.escolas),1,escol);
+            fclose(escol);
+    }
+
+
+
+
+cadastrar_profissionais ( ){
+    profiss = fopen("profiss.txt","a+b");
+    printf ("CADASTRO DE PROFISSIONAIS DE TI\n\n");
+    printf ("Nome do Profissional de TI: ");
+    fflush (stdin);
+    gets (ordem_servico.profissionais.nome_ti);
+    fflush (stdin);
+    printf ("Telefone: ");
+    gets (ordem_servico.profissionais.tel_ti);
+    printf ("E-mail: ");
+    fflush (stdin);
+    gets (ordem_servico.profissionais.email_ti);
+    fflush (stdin);
+    printf ("Empresa de Vinculo: ");
+    gets (ordem_servico.profissionais.empresa_ti);
+    fwrite(&ordem_servico.profissionais,sizeof(ordem_servico.profissionais),1,profiss);
+    fclose(profiss);
 }
 
+
+
+cadastrar_falhas ( ) {
+    system ("cls");
+    int op=0;
+    printf ("CADASTRO DE FALHAS\n\n");
+    do{
+        printf ("Selecione a opcao: \n1-listar falhas cadastradas\n2-cadastrar nova falha\n0-SAIR\n");
+        fflush (stdin);
+        scanf("%d",&op);
+        fflush (stdin);
+        if(op == 1)
+        {
+            /*while (!feof(falhas)) {
+                fread(&ordem_servico.diagnostico.falha,sizeof(ordem_servico.diagnostico.falha),1,falhas);
+                puts(ordem_servico.diagnostico.falha.cod_falha);
+                puts(ordem_servico.diagnostico.falha.titulo_falha);
+                puts(ordem_servico.diagnostico.falha.necess_falha);
+                puts(ordem_servico.diagnostico.falha.tipo);
+                puts(ordem_servico.diagnostico.falha.descricao);
+                puts(ordem_servico.diagnostico.falha.nome_pecas);
+            }*/
+            system("cls");
+            char temp[50];
+            falhas=fopen("falhas.txt","r");
+            int i=0;
+            while(fscanf(falhas,"%s",temp)!=EOF)
+            {
+                if(i%5==0)
+                {
+                    printf("Titulo: %s\n",temp);
+                }
+                    else if(i%5==1){
+                    printf("necessidade: %s\n",temp);}
+                    else if(i%5==2){
+                    printf("tipo %s\n",temp);}
+                    else if(i%5==3){
+                    printf("Descricao %s\n",temp);}
+                    else if(i%5==4){
+                    printf("pecas: %s\n\n",temp);}
+                    i++;
+                }
+        }
+        else if(op == 2)
+        {
+
+            printf ("Titulo: ");
+            fflush (stdin);
+            gets(ordem_servico.diagnostico.falha.titulo_falha);
+
+            printf ("Necessidade: ");
+            fflush (stdin);
+            gets(ordem_servico.diagnostico.falha.necess_falha);
+
+            printf ("Tipo: ");
+            fflush (stdin);
+            gets(ordem_servico.diagnostico.falha.tipo);
+
+            printf ("Descricao: ");
+            fflush (stdin);
+            gets(ordem_servico.diagnostico.falha.descricao);
+
+            printf ("Pecas danificadas: ");
+            fflush (stdin);
+            gets(ordem_servico.diagnostico.falha.nome_pecas);
+            system("cls");
+
+            falhas=fopen("falhas.txt","a");
+            //fprintf(falhas,"%d\n",ordem_servico.diagnostico.falha.cod_falha);
+            fprintf(falhas,"%s\n",ordem_servico.diagnostico.falha.titulo_falha);
+            fprintf(falhas,"%s\n",ordem_servico.diagnostico.falha.necess_falha);
+            fprintf(falhas,"%s\n",ordem_servico.diagnostico.falha.tipo);
+            fprintf(falhas,"%s\n",ordem_servico.diagnostico.falha.descricao);
+            fprintf(falhas,"%s\n",ordem_servico.diagnostico.falha.nome_pecas);
+            fprintf(falhas,"\n");
+
+            system("cls");
+            //printf("Código: %d\n",ordem_servico.diagnostico.falha.cod_falha);
+            printf("Titulo: %s\n",ordem_servico.diagnostico.falha.titulo_falha);
+            printf("Necessidade: %s\n",ordem_servico.diagnostico.falha.necess_falha);
+            printf("Tipo: %s\n",ordem_servico.diagnostico.falha.tipo);
+            printf("Descricao: %s\n",ordem_servico.diagnostico.falha.descricao);
+            printf("Pecas danificadas: %s\n",ordem_servico.diagnostico.falha.nome_pecas);
+
+            getchar();
+            fclose(falhas);
+            system("cls");
+            main();
+            //system("pause");
+        }
+
+    }while(op != 0);
+    fwrite(&ordem_servico.diagnostico,sizeof(ordem_servico.diagnostico),1,escol);
+    fclose(falhas);
+    system ("cls");
+    main();
+}
+
+cadastrar_diagnosticos(){
+    system ("cls");
+    int op=0;
+    printf ("CADASTRO DE DIAGNOSTICOS\n\n");
+    printf ("Falhas apresentadas:");
+    fflush(stdin);
+    gets(ordem_servico.diagnostico.bug_diag);
+
+    printf ("Tipo de diagnostico: (1) Resolvido  (2) Nao resolvido\n");
+    fflush(stdin);
+    scanf("%d",&ordem_servico.diagnostico.tipo_diag);
+
+    printf ("Descricao:");
+    fflush(stdin);
+    gets(ordem_servico.diagnostico.desc_diag);
+
+    printf ("Valor do Orcamento:");
+    fflush(stdin);
+    scanf("%f",&ordem_servico.diagnostico.orc_diag);
+
+    diag=fopen("diag.txt","a");
+    fprintf(diag,"%s\n",ordem_servico.diagnostico.bug_diag);
+    fprintf(diag,"%d\n",ordem_servico.diagnostico.tipo_diag);
+    fprintf(diag,"%s\n",ordem_servico.diagnostico.desc_diag);
+    fprintf(diag,"%f\n",ordem_servico.diagnostico.orc_diag);
+    fprintf(diag,"\n");
+
+    system("cls");
+    printf("\n");
+    printf("Falhas apresentadas: %s\n",ordem_servico.diagnostico.bug_diag);
+    printf("Tipo de diagnostico: %d\n",ordem_servico.diagnostico.tipo_diag);
+    printf("Descricao: %s\n",ordem_servico.diagnostico.desc_diag);
+    printf("Valor do orcamento: %f\n",ordem_servico.diagnostico.orc_diag);
+
+    fclose(diag);
+    printf("\n\n\n");
+    system("pause");
+    system("cls");
+    main();
+}
+relatorios(){
+    int op=0,i,temp[50],f=0;
+    system ("cls");
+    printf("****** RELATORIOS ******\n");
+    printf("[ 1 ] Ordens de servicos (por bairros)\n");
+    printf("[ 2 ] Diagnosticos\n");
+    printf("[ 3 ] Pecas mais problematicas\n");
+    printf("[ 0 ] Sair\n");
+    scanf("%d",&op);
+    switch (op)
+    {
+        case 3:
+            system("cls");
+            falhas=fopen("falhas.txt","r");
+            while(fscanf(falhas,"%s",temp)!=EOF)
+            {
+                if(i%5==4){
+                    if(ordem_servico.diagnostico.falha.nome_pecas=='fonte'){
+                        f=f+1;
+                    }
+                    printf("pecas: %s%d\n",temp,f);
+                }
+                i++;
+             }
+        system("pause");
+        system("cls");
+        main();
+        break;
+        case 0:
+            system("cls");
+            main();
+        break;
+    }
+}
+
+ main ( )
+ {
+    int opcao=0;
+    printf("******* MENU PRINCIPAL *******\n");
+    printf("[ 1 ] Cadastrar Escolas\n");
+    printf("[ 2 ] Cadastrar Profissionais de TI\n");
+    printf("[ 3 ] Cadastrar Falhas Apresentadas\n");
+    printf("[ 4 ] Cadastrar Diagnosticos\n");
+    printf("[ 5 ] Cadastrar Ordem de Servico\n");
+    printf("[ 6 ] Relatorios\n");
+    printf("[ 0 ] Sair\n");
+    scanf ("%d",&opcao);
+    switch (opcao)
+    {
+        case 1:
+            cadastrar_escola();
+        break;
+        case 2:
+            cadastrar_profissionais();
+        break;
+        case 3:
+            cadastrar_falhas();
+        break;
+        case 4:
+            cadastrar_diagnosticos();
+        break;
+        case 6:
+            relatorios();
+        break;
+        case 0:
+            system("cls");
+            system("color 04");
+            printf("\n\a******Pressione qualquer tecla para sair******\n\n\n\n\n\n");
+            exit(0);
+        break;
+    }
+
+ }
