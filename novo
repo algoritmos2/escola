@@ -1,0 +1,200 @@
+cadastrar_escola( )
+    {
+    system ("cls");
+    int op=0,i;
+        char temp[50];
+        printf ("CADASTRO DE ESCOLAS\n\n");
+        do{
+            printf ("Selecione a opcao: \n1-Listar Escolas Cadastradas\n2-Cadastrar Nova Escola\n0-SAIR\n");
+            fflush (stdin);
+            scanf("%d",&op);
+            fflush (stdin);
+            if(op == 1)
+            {
+                system("cls");
+                escol=fopen("escol.txt","r");
+                if (escol==NULL)
+                    printf("Nenhuma Escola Cadastrada\n");
+
+                while(fscanf(escol,"%s",temp)!=EOF)
+                {
+                    if(i%8==0)
+                    {
+                        printf("Nome da Escola: %s\n",temp);
+                    }
+                        else if(i%8==1){
+                        printf("Bairro: %s\n",temp);}
+                        else if(i%8==2){
+                        printf("Rua %s\n",temp);}
+                        else if(i%8==3){
+                        printf("Numero %s\n",temp);}
+                        else if(i%8==4){
+                        printf("Telefone da Escola: %s\n",temp);}
+                        else if(i%8==5){
+                        printf("Nome do Responsavel: %s\n",temp);}
+                        else if(i%8==6){
+                        printf("Telefone do Responsavel: %s\n",temp);}
+                        else if(i%8==7){
+                        printf("E-mail: %s\n\n",temp);}
+                        i++;
+                    }
+            }
+            else if(op == 2)
+            {
+
+                printf ("Nome da Escola: ");
+                fflush (stdin);
+                gets(ordem_servico.escolas.nome_escola);
+
+                printf ("Bairro: ");
+                fflush (stdin);
+                gets(ordem_servico.escolas.end.bairro);
+
+                printf ("Rua: ");
+                fflush (stdin);
+                gets(ordem_servico.escolas.end.rua);
+
+                printf ("Numero: ");
+                fflush (stdin);
+                gets(ordem_servico.escolas.end.numero);
+
+                printf ("Telefone da Escola: ");
+                fflush (stdin);
+                gets(ordem_servico.escolas.tel_escola);
+
+                printf ("Nome do Responsavel: ");
+                fflush (stdin);
+                gets(ordem_servico.escolas.nome_resp);
+
+                printf ("Telefone do Responsavel: ");
+                fflush (stdin);
+                gets(ordem_servico.escolas.tel_resp);
+
+                printf ("E-mail do Responsavel: ");
+                fflush (stdin);
+                gets(ordem_servico.escolas.email);
+
+               /* printf("Fundo para pagar o servico: ");
+                fflush(stdin);
+                scanf("%f",&ordem_servico.escolas.receita);*/
+                system("cls");
+
+                escol=fopen("escol.txt","a");
+                fprintf(escol,"%s\n",ordem_servico.escolas.nome_escola);
+                fprintf(escol,"%s\n",ordem_servico.escolas.end.bairro);
+                fprintf(escol,"%s\n",ordem_servico.escolas.end.rua);
+                fprintf(escol,"%s\n",ordem_servico.escolas.end.numero);
+                fprintf(escol,"%s\n",ordem_servico.escolas.tel_escola);
+                fprintf(escol,"%s\n",ordem_servico.escolas.nome_resp);
+                fprintf(escol,"%s\n",ordem_servico.escolas.tel_resp);
+                fprintf(escol,"%s\n",ordem_servico.escolas.email);
+                /*fprintf(escol,"%f\n",ordem_servico.escolas.receita);*/
+                fprintf(escol,"\n");
+
+
+                system("cls");
+                printf("Nomeda Escola: %s\n",ordem_servico.escolas.nome_escola);
+                printf("Bairro: %s\n",ordem_servico.escolas.end.bairro);
+                printf("Rua: %s\n",ordem_servico.escolas.end.rua);
+                printf("Numero: %s\n",ordem_servico.escolas.end.numero);
+                printf("Telefone da Escola: %s\n",ordem_servico.escolas.tel_escola);
+                printf("Nome do Responsavel: %s\n",ordem_servico.escolas.nome_resp);
+                printf("Telefone do Responsavel: %s\n",ordem_servico.escolas.tel_resp);
+                printf("E-mail: %s\n",ordem_servico.escolas.email);
+                /*printf("Fundo para pagar o serviço: %.2f",ordem_servico.escolas.receita);*/
+
+
+                getchar();
+                fclose(escol);
+                system("cls");
+                main();
+                system("pause");
+            }
+
+        }while(op != 0);
+        fwrite(&ordem_servico.escolas,sizeof(ordem_servico.escolas),1,escol);
+        fclose(escol);
+    }
+
+
+
+
+cadastrar_profissionais ( ){
+    system ("cls");
+    int op;
+    printf ("CADASTRO DE PROFISSIONAIS\n\n");
+    do{
+        printf ("Selecione a opcao: \n1-listar profissionais cadastrados\n2-cadastrar novo profissional\n0-SAIR\n");
+        fflush (stdin);
+        scanf("%d",&op);
+        fflush (stdin);
+        if(op == 1)
+        {
+            system("cls");
+            char temp[50];
+            profiss=fopen("profiss.txt","r");
+            int i=0;
+            while(fscanf(profiss,"%s",temp)!=EOF)
+            {
+                if(i%4==0)
+                {
+                    printf("Nome do Profissional de TI: %s\n",temp);
+                }
+                    else if(i%4==1){
+                    printf("Telefone: %s\n",temp);}
+                    else if(i%4==2){
+                    printf("E-mail: %s\n",temp);}
+                    else if(i%4==3){
+                    printf("Empresa de Vinculo: %s\n\n",temp);}
+                    i++;
+                }
+
+        }
+
+        else if(op == 2)
+        {
+
+            printf ("Nome do Profissional de TI: ");
+            fflush (stdin);
+            gets(ordem_servico.profissionais.nome_ti);
+
+            printf ("Telefone: ");
+            fflush (stdin);
+            gets(ordem_servico.profissionais.tel_ti);
+
+            printf ("E-mail: ");
+            fflush (stdin);
+            gets(ordem_servico.profissionais.email_ti);
+
+            printf ("Empresa de Vinculo: ");
+            fflush (stdin);
+            gets(ordem_servico.profissionais.empresa_ti);
+            system("cls");
+
+            profiss=fopen("profiss.txt","a");
+            //fprintf(falhas,"%d\n",ordem_servico.diagnostico.falha.cod_falha);
+            fprintf(profiss,"%s\n",ordem_servico.profissionais.nome_ti);
+            fprintf(profiss,"%s\n",ordem_servico.profissionais.tel_ti);
+            fprintf(profiss,"%s\n",ordem_servico.profissionais.email_ti);
+            fprintf(profiss,"%s\n",ordem_servico.profissionais.empresa_ti);
+            fprintf(profiss,"\n");
+
+            system("cls");
+            //printf("Código: %d\n",ordem_servico.diagnostico.falha.cod_falha);
+            printf("Titulo: %s\n",ordem_servico.profissionais.nome_ti);
+            printf("Necessidade: %s\n",ordem_servico.profissionais.tel_ti);
+            printf("Tipo: %s\n",ordem_servico.profissionais.email_ti);
+            printf("Descricao: %s\n",ordem_servico.profissionais.empresa_ti);
+            system("cls");
+            getchar();
+            fclose(profiss);
+            system("cls");
+            main();
+            //system("pause");
+        }
+     }while(op != 0);
+    fwrite(&ordem_servico.profissionais,sizeof(ordem_servico.profissionais),1,profiss);
+    fclose(profiss);
+    system ("cls");
+    main();
+}
